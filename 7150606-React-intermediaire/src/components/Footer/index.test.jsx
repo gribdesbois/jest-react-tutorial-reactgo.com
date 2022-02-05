@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import Footer from "."
+import Footer from '.'
 import { ThemeProvider } from '../../utils/context'
 
-describe('Footer', ()=> {
-  it('should render without crash', async()=> {
+describe('Footer', () => {
+  it('should render without crash', async () => {
     render(
       <ThemeProvider>
         <Footer />
@@ -12,8 +12,8 @@ describe('Footer', ()=> {
   })
 })
 
-describe('Change theme', ()=> {
-  it('should change the theme', async()=>{
+describe('Change theme', () => {
+  it('should change the theme', async () => {
     render(
       <ThemeProvider>
         <Footer />
@@ -25,4 +25,3 @@ describe('Change theme', ()=> {
     expect(nightModeButton.textContent).toBe('Changer de mode : 🌙')
   })
 })
-

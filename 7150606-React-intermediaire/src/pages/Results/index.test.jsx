@@ -1,6 +1,4 @@
-
-import { formatJobList, formatFetchParams } from "."
-
+import { formatJobList, formatFetchParams } from '.'
 
 describe('function formatJobList', () => {
   it('should add a comma to a word', () => {
@@ -13,15 +11,15 @@ describe('function formatJobList', () => {
   })
 })
 
-
-describe('function formatFetchParams(answers)', ()=>{
+describe('function formatFetchParams(answers)', () => {
   it('should use the right format for param', () => {
     const expectedState = 'a1=answer1'
-    expect(formatFetchParams({1: 'answer1'})).toEqual(expectedState)
+    expect(formatFetchParams({ 1: 'answer1' })).toEqual(expectedState)
   })
-  it('should concatenate params with an &', ()=>{
+  it('should concatenate params with an &', () => {
     const expectedState = 'a1=answer1&a2=answer2'
-    expect(formatFetchParams({ 1: 'answer1', 2: 'answer2' })).toEqual(expectedState)
+    expect(formatFetchParams({ 1: 'answer1', 2: 'answer2' })).toEqual(
+      expectedState
+    )
   })
 })
-
