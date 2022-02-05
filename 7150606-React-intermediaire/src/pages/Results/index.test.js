@@ -1,3 +1,4 @@
+
 import { formatJobList, formatFetchParams } from "."
 
 
@@ -23,3 +24,4 @@ describe('function formatFetchParams(answers)', ()=>{
     expect(formatFetchParams({ 1: 'answer1', 2: 'answer2' })).toEqual(expectedState)
   })
 })
+
