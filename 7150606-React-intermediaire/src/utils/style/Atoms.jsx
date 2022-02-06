@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import styled, { keyframes } from 'styled-components'
 import colors from './colors'
+import styled, { keyframes } from 'styled-components'
 
 const rotate = keyframes`
   from {
@@ -28,8 +28,9 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 18px;
   text-align: center;
-  ${(props) => props.$isFullLink
-    && `color: white; 
+  ${(props) =>
+    props.$isFullLink &&
+    `color: white; 
     border-radius: 30px; 
     background-color: ${colors.primary};`}
 `

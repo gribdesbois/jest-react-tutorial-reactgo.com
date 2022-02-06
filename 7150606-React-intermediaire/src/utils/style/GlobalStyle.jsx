@@ -7,7 +7,8 @@ const StyledGlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: ${(props) => (props.isDarkMode ? '#2F2E41' : 'white')};
+        background-color: ${(props) =>
+          props.isDarkMode ? '#2F2E41' : 'white'};
         margin: 0;
     }
 `

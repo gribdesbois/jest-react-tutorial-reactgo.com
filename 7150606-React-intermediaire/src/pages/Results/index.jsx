@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import styled from 'styled-components'
 import { SurveyContext } from '../../utils/context'
+import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { useFetch, useTheme } from '../../utils/hooks'
 import { StyledLink, Loader } from '../../utils/style/Atoms'
@@ -52,7 +52,7 @@ const LoaderWrapper = styled.div`
   justify-content: center;
 `
 
-export function formatFetchParams(answers) {
+export function formatQueryParams(answers) {
   const answerNumbers = Object.keys(answers)
 
   return answerNumbers.reduce((previousParams, answerNumber, index) => {
@@ -65,17 +65,18 @@ export function formatFetchParams(answers) {
 export function formatJobList(title, listLength, index) {
   if (index === listLength - 1) {
     return title
+  } else {
+    return `${title},`
   }
-  return `${title},`
 }
 
 function Results() {
   const { theme } = useTheme()
   const { answers } = useContext(SurveyContext)
-  const fetchParams = formatFetchParams(answers)
+  const queryParams = formatQueryParams(answers)
 
   const { data, isLoading, error } = useFetch(
-    `http://localhost:8000/results?${fetchParams}`
+    `http://localhost:8000/results?${queryParams}`
   )
 
   if (error) {
@@ -86,7 +87,7 @@ function Results() {
 
   return isLoading ? (
     <LoaderWrapper>
-      <Loader />
+      <Loader data-testid="loader" />
     </LoaderWrapper>
   ) : (
     <ResultsContainer theme={theme}>
@@ -112,8 +113,10 @@ function Results() {
               theme={theme}
               key={`result-detail-${index}-${result.title}`}
             >
-              <JobTitle theme={theme}>{result.title}</JobTitle>
-              <p>{result.description}</p>
+              <JobTitle theme={theme} data-testid="job-title">
+                {result.title}
+              </JobTitle>
+              <p data-testid="job-description">{result.description}</p>
             </JobDescription>
           ))}
       </DescriptionWrapper>
